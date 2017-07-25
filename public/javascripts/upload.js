@@ -1,5 +1,5 @@
 console.log("upload.js is loaded")
-function plot(){$.getJSON("/json", function(json) {
+$.getJSON("/json", function(json) {
 	alert("whgiwh");
     //console.log(json); // this will show the info it in firebug console
 	console.log(json["groups"][0]["peaks"][0]["sampleName"])
@@ -68,7 +68,6 @@ function plot(){$.getJSON("/json", function(json) {
                         .attr('fill', 'none');
                 
 });
-}
 $('.upload-btn').on('click', function (){
     $('#upload-input').click();
     $('.progress-bar').text('0%');
