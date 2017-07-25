@@ -4,7 +4,7 @@ var plot = function(){
 $.getJSON("/json", function(json) {
     //console.log(json); // this will show the info it in firebug console
 	$("#visualisation").css('visibility', 'visible');
-	console.log(json["groups"][0]["peaks"][0]["sampleName"])
+	// console.log(json["groups"][0]["peaks"][0]["sampleName"])
 	var data1=[]
 	var data2=[]
 	var data3=[]
@@ -29,7 +29,7 @@ $.getJSON("/json", function(json) {
                             bottom: 20,
                             left: 50
                         },
-                        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([10, 15]),
+                        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([10, 16]),
                         yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, 100000000]),
                         xAxis = d3.svg.axis()
                         .scale(xScale),
@@ -77,7 +77,7 @@ var plotAll = function(){
 $.getJSON("/json", function(json) {
     //console.log(json); // this will show the info it in firebug console
 	$("#visualisation1").css('visibility', 'visible');
-	console.log(json["groups"][0]["peaks"][0]["sampleName"])
+	// console.log(json["groups"][0]["peaks"][0]["sampleName"])
 
 	for(idx=0; idx < 2; idx++){
 		var data1=[]
@@ -104,7 +104,7 @@ $.getJSON("/json", function(json) {
 	                            bottom: 20,
 	                            left: 50
 	                        },
-	                        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([10, 15]),
+	                        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([0, 17]),
 	                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, 100000000]),
 	                        xAxis = d3.svg.axis()
 	                        .scale(xScale),
