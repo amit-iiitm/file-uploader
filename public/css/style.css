@@ -68,14 +68,15 @@ h2 {
   }
 }
 
-#visualisation{
+.visualisation{
   visibility: hidden;
-  padding-left: 50px;
-  padding-right: 50px;
 }
 
-#visualisation1{
+.visualisation1{
   visibility: hidden;
+}
+
+#visualisation1, #visualisation{
   padding-left: 50px;
   padding-right: 50px;
 }

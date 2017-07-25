@@ -3,7 +3,7 @@
 var plot = function(){
 $.getJSON("/json", function(json) {
     //console.log(json); // this will show the info it in firebug console
-	$("#visualisation").css('visibility', 'visible');
+	$(".visualisation").css('visibility', 'visible');
 	// console.log(json["groups"][0]["peaks"][0]["sampleName"])
 	var data1=[]
 	var data2=[]
@@ -22,7 +22,7 @@ $.getJSON("/json", function(json) {
 	console.log(data3)
 	var vis = d3.select("#visualisation"),
                         WIDTH = 900,
-                        HEIGHT = 500,
+                        HEIGHT = 550,
                         MARGINS = {
                             top: 20,
                             right: 20,
@@ -69,6 +69,20 @@ $.getJSON("/json", function(json) {
                         .attr('stroke-width', 2)
                         .attr('fill', 'none');
 
+												vis.append("text")
+												.attr("transform", "rotate(-90)")
+												.attr("y", 0 - MARGINS.left)
+												.attr("x",0 - (HEIGHT / 2))
+												.attr("dy", "1em")
+												.style("text-anchor", "middle")
+												.text("Intensity");
+
+												vis.append("text")
+												.attr("x", WIDTH / 2 )
+												.attr("y",  HEIGHT + MARGINS.top)
+												.style("text-anchor", "middle")
+												.text("Retention Time (in Minutes)");
+
 });
 };
 
@@ -76,7 +90,7 @@ $.getJSON("/json", function(json) {
 var plotAll = function(){
 $.getJSON("/json", function(json) {
     //console.log(json); // this will show the info it in firebug console
-	$("#visualisation1").css('visibility', 'visible');
+	$(".visualisation1").css('visibility', 'visible');
 	// console.log(json["groups"][0]["peaks"][0]["sampleName"])
 
 	for(idx=0; idx < 2; idx++){
@@ -97,14 +111,14 @@ $.getJSON("/json", function(json) {
 		console.log(data3)
 		var vis = d3.select("#visualisation1"),
 	                        WIDTH = 900,
-	                        HEIGHT = 500,
+	                        HEIGHT = 550,
 	                        MARGINS = {
 	                            top: 20,
 	                            right: 20,
 	                            bottom: 20,
 	                            left: 50
 	                        },
-	                        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([0, 17]),
+	                        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([4, 17]),
 	                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, 100000000]),
 	                        xAxis = d3.svg.axis()
 	                        .scale(xScale),
@@ -118,6 +132,7 @@ $.getJSON("/json", function(json) {
 	                        .call(xAxis);
 	                    vis.append("svg:g")
 	                        .attr("class", "y axis")
+													.attr("transform", "rotate(-90)")
 	                        .attr("transform", "translate(" + (MARGINS.left) + ",0)")
 	                        .call(yAxis);
 	                    var lineGen = d3.svg.line()
@@ -138,11 +153,26 @@ $.getJSON("/json", function(json) {
 	                        .attr('stroke', 'blue')
 	                        .attr('stroke-width', 2)
 	                        .attr('fill', 'none');
-						vis.append('svg:path')
+											vis.append('svg:path')
 	                        .attr('d', lineGen(data3))
 	                        .attr('stroke', 'red')
 	                        .attr('stroke-width', 2)
 	                        .attr('fill', 'none');
+
+													vis.append("text")
+										      .attr("transform", "rotate(-90)")
+										      .attr("y", 0 - MARGINS.left)
+										      .attr("x",0 - (HEIGHT / 2))
+										      .attr("dy", "1em")
+										      .style("text-anchor", "middle")
+										      .text("Intensity");
+
+													vis.append("text")
+													.attr("x", WIDTH / 2 )
+      										.attr("y",  HEIGHT + MARGINS.top + 20)
+										      .style("text-anchor", "middle")
+										      .text("Retention Time (in Minutes)");
+
 					}
 
 	});
